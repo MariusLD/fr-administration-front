@@ -5,25 +5,27 @@
 </ng-container>
 
 <ng-template #tempUpdate>
+  <div class="list-input">
     <div>
         <button (click)="confirm()">Confirm Changes</button>
     </div>
-    <div>
+    <div class="label-input">
         <label for="firstname">Firstname</label>
         <input [(ngModel)]="firstname" type="text" id="firstname" placeholder="{{firstname}}" />
     </div>
-    <div>
+    <div class="label-input">
         <label for="lastname">Lastname</label>
         <input [(ngModel)]="lastname" type="text" id="lastname" placeholder="{{lastname}}" />
     </div>
-    <div>
+    <div class="label-input">
         <label for="age">Age</label>
         <input [(ngModel)]="age" type="text" id="age" placeholder="{{age}}" />
     </div>
-    <div>
+    <div class="label-input">
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="{{password}}" />
     </div>
+  </div>
 </ng-template>
 
 <ng-template #tempBase>

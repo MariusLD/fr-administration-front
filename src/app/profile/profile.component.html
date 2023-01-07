@@ -1,17 +1,50 @@
 <app-nav></app-nav>
-<mat-card class="card">
-    <mat-card-content>
-      <div class="item-firstname">
-        {{firstName}}
-      </div>
-      <div class="item-lastname">
-        {{lastName}}
-      </div>
-      <div class="item-age">
-        {{age}}
-      </div>
-    </mat-card-content>
-    <mat-card-footer>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </mat-card-footer>
-</mat-card>
+
+<ng-container
+  *ngIf="isUpdating; then tempUpdate; else tempBase">
+</ng-container>
+
+<ng-template #tempUpdate>
+    <div>
+        <button (click)="confirm()">Confirm Changes</button>
+    </div>
+    <div>
+        <label for="firstname">Firstname</label>
+        <input [(ngModel)]="firstname" type="text" id="firstname" placeholder="{{firstname}}" />
+    </div>
+    <div>
+        <label for="lastname">Lastname</label>
+        <input [(ngModel)]="lastname" type="text" id="lastname" placeholder="{{lastname}}" />
+    </div>
+    <div>
+        <label for="age">Age</label>
+        <input [(ngModel)]="age" type="text" id="age" placeholder="{{age}}" />
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="{{password}}" />
+    </div>
+</ng-template>
+
+<ng-template #tempBase>
+    <div>
+        <button (click)="update()">Update Profile</button>
+    </div>
+    <mat-card class="card">
+      <mat-card-content>
+        <div class="item-firstname">
+          {{firstname}}
+        </div>
+        <div class="item-lastname">
+          {{lastname}}
+        </div>
+        <div class="item-age">
+          {{age}}
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+  </mat-card>
+</ng-template>
+

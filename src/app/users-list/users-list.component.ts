@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, lastValueFrom  } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',

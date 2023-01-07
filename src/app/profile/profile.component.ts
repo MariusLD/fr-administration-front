@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable, lastValueFrom  } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { lastValueFrom, Observable } from 'rxjs';
 import { TokenStorageService } from '../service/token-storage.service';
 
 @Component({
@@ -9,25 +9,43 @@ import { TokenStorageService } from '../service/token-storage.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  firstName : string;
-  lastName : string;
-  age : number;
-  constructor(private http: HttpClient,
-    private service: TokenStorageService){
-      this.firstName = ""
-      this.lastName = ""
-      this.age = 0;
-    }
+  firstname!: string;
+  lastname!: string;
+  age!: number;
+  password!: string;
+
+  isUpdating: boolean = false;
+
+  constructor(
+    private http: HttpClient,
+    private service: TokenStorageService,
+  ) { }
 
   ngOnInit(): void {
-    const resquest: Observable<any> = this.http.get('http://localhost:3000/users/'+this.service.getId(), { observe: 'response' });
+    const resquest: Observable<any> = this.http.get('http://localhost:3000/users/' + this.service.getId()
+      , { observe: 'response' });
     lastValueFrom(resquest).then(response => {
-      this.firstName = response.body.firstname;
-      console.log(this.firstName);
-      this.lastName = response.body.lastname;
-      console.log(this.lastName);
+      this.firstname = response.body.firstname;
+      this.lastname = response.body.lastname;
       this.age = response.body.age;
-      console.log(this.age);
+      this.password = response.body.password;
     });
   }
+
+  update(): void {
+    this.isUpdating = true;
+  }
+
+  confirm(): void {
+    const request: Observable<any> = this.http.put('http://localhost:3000/users/' + this.service.getId(), {
+      firstname: this.firstname,
+      lastname: this.lastname,
+      age: this.age,
+      // password: this.password
+    }, { observe: 'response' });
+    lastValueFrom(request).then(response => {
+      this.isUpdating = false;
+    });
+  }
+
 }

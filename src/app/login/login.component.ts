@@ -19,14 +19,11 @@ export class LoginComponent {
     const username: string = (document.getElementById('username') as HTMLInputElement).value;
     const password: string = (document.getElementById('password') as HTMLInputElement).value;
     this.api.post({endpoint: '/auth/login', data: { username, password }})
-    .then(response => {
-      this.tokenStorageService.save(username, response.access_token)
-      if (this.tokenStorageService.isLogged()) {
-        this.router.navigateByUrl('/profile');
-      } else {
-        this.router.navigateByUrl('/login');
-      }
-    })
-    .catch(error => +error.status === 401 ? alert('Invalid') : console.log('Error'));
+      .then(response => {
+        this.tokenStorageService.save(username, response.access_token)
+        if (this.tokenStorageService.isLogged()) {
+          this.router.navigateByUrl('/profile');
+        }})
+      .catch(error => +error.status === 401 ? alert('Invalid credentials') : console.log('Error'));
   }
 }

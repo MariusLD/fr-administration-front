@@ -42,6 +42,10 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/register');
   }
 
+  cancel(): void {
+    this.router.navigateByUrl('/login');
+  }
+
   confirmRegistration(): void {
     const firstname: string = (document.getElementById('firstname') as HTMLInputElement).value;
     const lastname: string = (document.getElementById('lastname') as HTMLInputElement).value;
@@ -54,7 +58,7 @@ export class LoginComponent implements OnInit {
     else {
       this.api.post({endpoint: '/users', data: { firstname: firstname, lastname: lastname, age: age, password: password }})
         .then(response => {
-          alert('Registration successful\n Your username is: ' + response.id);
+          alert('Registration successful\nYour username is: ' + response.id);
           this.router.navigateByUrl('/login');
         })
     }

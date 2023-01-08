@@ -1,0 +1,26 @@
+.card {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10%;
+  }
+  
+  .item-firstname,
+  .item-lastname,
+  .item-age {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .mat-card-footer {
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mat-progress-bar {
+    width: 80%;
+  }

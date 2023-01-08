@@ -33,6 +33,10 @@ export class NavComponent {
     this.route.navigateByUrl("/profile");
   }
 
+  assosList(): void {
+    this.route.navigateByUrl("/associations");
+  }
+
   getUrl(): string {
     return this.route.url;
   }

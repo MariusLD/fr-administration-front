@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom, Observable } from 'rxjs';
 import { ApiHelperService } from '../service/api-helper.service';
 import { TokenStorageService } from '../service/token-storage.service';
 
@@ -50,7 +48,7 @@ export class ProfileComponent implements OnInit {
   updatePsswd(): void {
     this.isUpdatingPsswd = true;
   }
-  
+
   confirmPsswd(): void {
     if (this.newpassword !== '' && this.newpassword === this.confpassword) {
       this.isUpdatingPsswd = false;

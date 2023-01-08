@@ -16,6 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatCardModule } from '@angular/material/card'
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule } from '@angular/forms';
+import { AssosListComponent } from './assos-list/assos-list.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     UsersListComponent,
     LoginComponent,
     NavComponent,
-    ProfileComponent
+    ProfileComponent,
+    AssosListComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

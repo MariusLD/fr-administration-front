@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, lastValueFrom } from 'rxjs';
+import { ApiHelperService } from '../service/api-helper.service';
 
 @Component({
   selector: 'app-users-list',
@@ -10,11 +10,11 @@ import { Observable, lastValueFrom } from 'rxjs';
 export class UsersListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'lastname', 'firstname', 'age'];
   dataSource = [];
-  constructor(private http: HttpClient){}
+  constructor(private api: ApiHelperService){}
   
   ngOnInit(): void {
-    const resquest: Observable<any> = this.http.get('http://localhost:3000/users', { observe: 'response' });
-    lastValueFrom(resquest).then(response => this.dataSource = response.body);
+    this.api.get({endpoint: '/users'})
+      .then(response => this.dataSource = response);
   }
 }
 

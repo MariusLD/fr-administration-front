@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom, Observable } from 'rxjs';
+import { ApiHelperService } from '../service/api-helper.service';
 import { TokenStorageService } from '../service/token-storage.service';
 
 @Component({
@@ -20,18 +21,17 @@ export class ProfileComponent implements OnInit {
   isUpdatingPsswd: boolean = false;
 
   constructor(
-    private http: HttpClient,
     private service: TokenStorageService,
+    private api: ApiHelperService
   ) { }
 
   ngOnInit(): void {
-    const resquest: Observable<any> = this.http.get('http://localhost:3000/users/' + this.service.getId()
-      , { observe: 'response' });
-    lastValueFrom(resquest).then(response => {
-      this.firstname = response.body.firstname;
-      this.lastname = response.body.lastname;
-      this.age = response.body.age;
-    }).catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+    this.api.get({endpoint: '/users/' + this.service.getId()})
+      .then(response => {
+        this.firstname = response.firstname;
+        this.lastname = response.lastname;
+        this.age = response.age;})
+      .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
   }
 
   update(): void {
@@ -39,30 +39,27 @@ export class ProfileComponent implements OnInit {
   }
 
   confirm(): void {
-    const request: Observable<any> = this.http.put('http://localhost:3000/users/' + this.service.getId(), {
-      firstname: this.firstname,
-      lastname: this.lastname,
-      age: this.age
-    }, { observe: 'response' });
-    lastValueFrom(request).then(response => {
-      this.isUpdating = false;
-    }).catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+    this.api.put({endpoint: '/users/' + this.service.getId(), data: {firstname: this.firstname,
+        lastname: this.lastname,
+        age: this.age}})
+      .then(response => {
+        this.isUpdating = false;})
+      .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
   }
 
   updatePsswd(): void {
     this.isUpdatingPsswd = true;
   }
+  
   confirmPsswd(): void {
     if (this.newpassword !== '' && this.newpassword === this.confpassword) {
       this.isUpdatingPsswd = false;
-      const request: Observable<any> = this.http.put('http://localhost:3000/users/' + this.service.getId(), {
-        password: this.newpassword
-      }, { observe: 'response' });
-      lastValueFrom(request).then(response => {
-        this.isUpdatingPsswd = false;
-        this.newpassword = '';
-        this.confpassword = '';
-      }).catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+      this.api.put({endpoint: '/users/' + this.service.getId(), data: {password: this.newpassword}})
+        .then(response => {
+          this.isUpdatingPsswd = false;
+          this.newpassword = '';
+          this.confpassword = '';})
+        .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
     }
     else {
       alert('Passwords do not match');

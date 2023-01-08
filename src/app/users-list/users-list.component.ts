@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ApiHelperService } from '../service/api-helper.service';
 import { TokenStorageService } from '../service/token-storage.service';
@@ -10,7 +11,8 @@ import { TokenStorageService } from '../service/token-storage.service';
 })
 export class UsersListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'lastname', 'firstname', 'age', 'info', 'delete'];
-  dataSource = [];
+  dataSource! : MatTableDataSource<any>;
+
   constructor(
     private api: ApiHelperService,
     private route: Router,
@@ -19,7 +21,12 @@ export class UsersListComponent implements OnInit {
   
   ngOnInit(): void {
     this.api.get({endpoint: '/users'})
-      .then(response => this.dataSource = response);
+      .then(
+        response => {
+          this.dataSource = new MatTableDataSource(response)
+          this.dataSource.filterPredicate =
+            (data: any, filter: string) => data.id.toString().includes(filter)
+          });
   }
 
   goToInfo(id: number): void {
@@ -30,6 +37,16 @@ export class UsersListComponent implements OnInit {
     this.api.delete({endpoint: '/users/' + id})
       .then(response => this.ngOnInit());
   }
+
+  ok(): void {
+    alert('ok')
+  }
+
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   
 }
 

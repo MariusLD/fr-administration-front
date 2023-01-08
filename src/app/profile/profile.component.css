@@ -74,3 +74,14 @@
     text-transform: uppercase;
     margin: 10px 0;
   }
+
+  .button-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-in-list button {
+    width: 75%;
+  }

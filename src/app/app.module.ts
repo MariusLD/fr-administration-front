@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatCardModule } from '@angular/material/card'
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { AssosListComponent } from './assos-list/assos-list.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 
@@ -37,7 +38,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     HttpClientModule,
     MatCardModule,
     MatProgressBarModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
   ],
   providers: [
     {

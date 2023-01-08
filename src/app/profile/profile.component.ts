@@ -12,6 +12,10 @@ export class ProfileComponent implements OnInit {
   lastname!: string;
   age!: number;
 
+  backupFirstname!: string;
+  backupLastname!: string;
+  backupAge!: number;
+
   newpassword: string = '';
   confpassword: string = '';
 
@@ -34,6 +38,9 @@ export class ProfileComponent implements OnInit {
 
   update(): void {
     this.isUpdating = true;
+    this.backupFirstname = this.firstname;
+    this.backupLastname = this.lastname;
+    this.backupAge = this.age;
   }
 
   confirm(): void {
@@ -41,8 +48,19 @@ export class ProfileComponent implements OnInit {
         lastname: this.lastname,
         age: this.age}})
       .then(response => {
+        this.backupAge = this.age;
+        this.backupFirstname = this.firstname;
+        this.backupLastname = this.lastname;
         this.isUpdating = false;})
       .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+  }
+
+  discard(): void {
+    this.isUpdating = false;
+    this.firstname = this.backupFirstname;
+    this.lastname = this.backupLastname;
+    this.age = this.backupAge;
+    this.discardPsswd();
   }
 
   updatePsswd(): void {
@@ -59,9 +77,18 @@ export class ProfileComponent implements OnInit {
           this.confpassword = '';})
         .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
     }
+    else if (this.newpassword === '') {
+      alert('Empty password, please enter a password');
+    }
     else {
       alert('Passwords do not match');
     }
+  }
+
+  discardPsswd(): void {
+    this.isUpdatingPsswd = false;
+    this.newpassword = '';
+    this.confpassword = '';
   }
 
 }

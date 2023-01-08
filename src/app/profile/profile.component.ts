@@ -12,9 +12,12 @@ export class ProfileComponent implements OnInit {
   firstname!: string;
   lastname!: string;
   age!: number;
-  password!: string;
+
+  newpassword: string = '';
+  confpassword: string = '';
 
   isUpdating: boolean = false;
+  isUpdatingPsswd: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -28,8 +31,7 @@ export class ProfileComponent implements OnInit {
       this.firstname = response.body.firstname;
       this.lastname = response.body.lastname;
       this.age = response.body.age;
-      this.password = response.body.password;
-    });
+    }).catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
   }
 
   update(): void {
@@ -40,12 +42,31 @@ export class ProfileComponent implements OnInit {
     const request: Observable<any> = this.http.put('http://localhost:3000/users/' + this.service.getId(), {
       firstname: this.firstname,
       lastname: this.lastname,
-      age: this.age,
-      // password: this.password
+      age: this.age
     }, { observe: 'response' });
     lastValueFrom(request).then(response => {
       this.isUpdating = false;
-    });
+    }).catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+  }
+
+  updatePsswd(): void {
+    this.isUpdatingPsswd = true;
+  }
+  confirmPsswd(): void {
+    if (this.newpassword !== '' && this.newpassword === this.confpassword) {
+      this.isUpdatingPsswd = false;
+      const request: Observable<any> = this.http.put('http://localhost:3000/users/' + this.service.getId(), {
+        password: this.newpassword
+      }, { observe: 'response' });
+      lastValueFrom(request).then(response => {
+        this.isUpdatingPsswd = false;
+        this.newpassword = '';
+        this.confpassword = '';
+      }).catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+    }
+    else {
+      alert('Passwords do not match');
+    }
   }
 
 }

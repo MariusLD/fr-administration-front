@@ -1,52 +1,66 @@
 <app-nav></app-nav>
 
-<ng-container
-  *ngIf="isUpdating; then tempUpdate; else tempBase">
+<ng-container *ngIf="isUpdating; then tempUpdate; else tempBase">
 </ng-container>
 
 <ng-template #tempUpdate>
   <div class="list-input">
     <div>
-        <button (click)="confirm()">Confirm Changes</button>
+      <button (click)="confirm()">Confirm Changes</button>
     </div>
     <div class="label-input">
-        <label for="firstname">Firstname</label>
-        <input [(ngModel)]="firstname" type="text" id="firstname" placeholder="{{firstname}}" />
+      <label for="firstname">Firstname</label>
+      <input [(ngModel)]="firstname" type="text" id="firstname" placeholder="{{firstname}}" />
     </div>
     <div class="label-input">
-        <label for="lastname">Lastname</label>
-        <input [(ngModel)]="lastname" type="text" id="lastname" placeholder="{{lastname}}" />
+      <label for="lastname">Lastname</label>
+      <input [(ngModel)]="lastname" type="text" id="lastname" placeholder="{{lastname}}" />
     </div>
     <div class="label-input">
-        <label for="age">Age</label>
-        <input [(ngModel)]="age" type="text" id="age" placeholder="{{age}}" />
+      <label for="age">Age</label>
+      <input [(ngModel)]="age" type="text" id="age" placeholder="{{age}}" />
     </div>
-    <div class="label-input">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="{{password}}" />
-    </div>
+    <ng-container *ngIf="isUpdatingPsswd; then psswd; else noPsswd">
+    </ng-container>
+    <ng-template #psswd>
+      <div class="label-input">
+        <label for="newpassword">New Password</label>
+        <input [(ngModel)]="newpassword" type="password" id="newpassword" placeholder="" />
+      </div>
+      <div class="label-input">
+        <label for="confpassword">Confirm Password</label>
+        <input [(ngModel)]="confpassword" type="password" id="confpassword" placeholder="" />
+      </div>
+      <div>
+        <button (click)="confirmPsswd()">Confirm Password Change</button>
+      </div>
+    </ng-template>
+    <ng-template #noPsswd>
+      <div>
+        <button (click)="updatePsswd()">Update Password</button>
+      </div>
+    </ng-template>
   </div>
 </ng-template>
 
 <ng-template #tempBase>
-    <div>
-        <button (click)="update()">Update Profile</button>
-    </div>
-    <mat-card class="card">
-      <mat-card-content>
-        <div class="item-firstname">
-          {{firstname}}
-        </div>
-        <div class="item-lastname">
-          {{lastname}}
-        </div>
-        <div class="item-age">
-          {{age}}
-        </div>
-      </mat-card-content>
-      <mat-card-footer>
-          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </mat-card-footer>
+  <mat-card class="card">
+    <mat-card-header>
+      <button (click)="update()">Update Profile</button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="item-firstname">
+        {{firstname}}
+      </div>
+      <div class="item-lastname">
+        {{lastname}}
+      </div>
+      <div class="item-age">
+        {{age}}
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
   </mat-card>
 </ng-template>
-

@@ -34,7 +34,6 @@ table {
     flex-direction: row;
     align-content: left;
     justify-content: left;
-    padding-bottom: 10px;
   }
 
   button {
@@ -63,3 +62,4 @@ table {
     text-transform: uppercase;
     margin: 10px 10px;
   }
+  

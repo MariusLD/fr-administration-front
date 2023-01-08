@@ -1,17 +1,27 @@
 <app-nav></app-nav>
 
 <mat-card class="card">
+    <br>
+    <mat-card-title>Personal Data</mat-card-title>
     <mat-card-content>
       <div class="item-firstname">
-        {{firstname}}
+        Firstname: {{firstname}}
       </div>
       <div class="item-lastname">
-        {{lastname}}
+        Lastname: {{lastname}}
       </div>
       <div class="item-age">
-        {{age}}
+        Age: {{age}}
       </div>
+      <br>
+      <mat-card-title>Associations</mat-card-title>
+      <ng-container *ngFor="let asso of listAsso">
+        <div class="item-asso">
+          {{asso.name}}
+        </div>
+      </ng-container>
     </mat-card-content>
+    <br>
     <mat-card-footer>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </mat-card-footer>

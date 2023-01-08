@@ -4,12 +4,13 @@
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-top: 10%;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   }
   
   .item-firstname,
   .item-lastname,
-  .item-age {
+  .item-age,
+  .item-asso {
     font-size: 18px;
     margin: 10px 0;
   }

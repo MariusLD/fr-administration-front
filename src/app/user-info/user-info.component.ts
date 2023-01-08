@@ -13,6 +13,8 @@ export class UserInfoComponent {
   lastname!: string;
   age!: number;
 
+  listAsso: any[] = [];
+
   constructor(
     private api: ApiHelperService,
     private route: ActivatedRoute
@@ -25,5 +27,17 @@ export class UserInfoComponent {
         this.lastname = response.lastname;
         this.age = response.age;})
       .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+
+    this.api.get({endpoint: '/associations'})
+      .then(response => {
+        for (let asso of response) {
+          for (let user of asso.users) {
+            if (user.id === +this.route.snapshot.params['id']) {
+              this.listAsso.push(asso);
+            }
+          }
+        }
+      })
+      .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error: '+ error));
   }
 }

@@ -58,17 +58,20 @@
     <mat-card-header>
       <button (click)="update()">Update Profile</button>
     </mat-card-header>
+    <br>
+    <mat-card-title>Personal Data</mat-card-title>
     <mat-card-content>
       <div class="item-lastname">
-        {{firstname}}
+        Firstname: {{firstname}}
       </div>
       <div class="item-lastname">
-        {{lastname}}
+        Lastname: {{lastname}}
       </div>
       <div class="item-age">
-        {{age}}
+        Age: {{age}}
       </div>
     </mat-card-content>
+    <br>
     <mat-card-footer>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </mat-card-footer>

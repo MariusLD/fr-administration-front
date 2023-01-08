@@ -1,13 +1,13 @@
 <app-nav></app-nav>
 
 <div class="menu">
-  <div class="menu-item">
-    <button (click)="ok()">Create User</button>
-  </div>
   <mat-form-field>
     <mat-label>Search User</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="id">
   </mat-form-field>
+  <div class="menu-button">
+    <button (click)="ok()">Create User</button>
+  </div>
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   

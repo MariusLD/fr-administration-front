@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiHelperService } from '../service/api-helper.service';
 import { TokenStorageService } from '../service/token-storage.service';
 
@@ -8,12 +8,23 @@ import { TokenStorageService } from '../service/token-storage.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  registering: boolean = false;
+  
   constructor(
     private router: Router,
     private api: ApiHelperService,
     private tokenStorageService: TokenStorageService,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.route.data.subscribe(data => {
+      this.registering = data['registering'];
+    })
+  }
+
+
     
   login(): void {
     const username: string = (document.getElementById('username') as HTMLInputElement).value;
@@ -25,5 +36,27 @@ export class LoginComponent {
           this.router.navigateByUrl('/profile');
         }})
       .catch(error => +error.status === 401 ? alert('Invalid credentials') : console.log('Error'));
+  }
+
+  register(): void {
+    this.router.navigateByUrl('/register');
+  }
+
+  confirmRegistration(): void {
+    const firstname: string = (document.getElementById('firstname') as HTMLInputElement).value;
+    const lastname: string = (document.getElementById('lastname') as HTMLInputElement).value;
+    const age: number = +(document.getElementById('age') as HTMLInputElement).value;
+    const password: string = (document.getElementById('password') as HTMLInputElement).value;
+
+    if (firstname === '' || lastname === '' || age === 0 || password === '') {
+      alert('Please fill all fields');
+    }
+    else {
+      this.api.post({endpoint: '/users', data: { firstname: firstname, lastname: lastname, age: age, password: password }})
+        .then(response => {
+          alert('Registration successful\n Your username is: ' + response.id);
+          this.router.navigateByUrl('/login');
+        })
+    }
   }
 }

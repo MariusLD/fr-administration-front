@@ -38,10 +38,6 @@ export class UsersListComponent implements OnInit {
       .then(response => this.ngOnInit());
   }
 
-  ok(): void {
-    alert('ok')
-  }
-
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

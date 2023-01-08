@@ -8,12 +8,13 @@ import { AssosListComponent } from './assos-list/assos-list.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 
 const routes: Routes = [
-  { path : 'login', component:  LoginComponent},
+  { path : 'login', component:  LoginComponent,  data: {registering: false} },
   { path: 'users', component: UsersListComponent, canActivate: [AuthGuard]},
   { path: 'user/:id', component: UserInfoComponent, canActivate: [AuthGuard]},
   { path: 'associations', component: AssosListComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  { path : '', redirectTo: 'login', 'pathMatch': 'full'}
+  { path: 'register', component: LoginComponent, data: {registering: true} },
+  { path: '', redirectTo: 'login', 'pathMatch': 'full'}
 ];
 
 @NgModule({

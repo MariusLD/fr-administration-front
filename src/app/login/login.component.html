@@ -1,8 +1,26 @@
-<div>
-    <label for="username">Username</label>
-    <input type="text" id="username" placeholder="username" />
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="password" />
-    <a (click)="login()"><button>Login</button></a>
-</div>
-  
+<ng-container *ngIf="registering; then TmpRegister; else TmpLogin">  
+</ng-container>
+
+<ng-template #TmpLogin>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="username" />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="password" />
+        <a (click)="login()"><button>Login</button></a>
+        <a (click)="register()"><button>Register</button></a>
+    </div>
+</ng-template>
+<ng-template #TmpRegister>
+    <div>
+        <label for="firstname">Firstname</label>
+        <input type="text" id="firstname" placeholder="firstname" />
+        <label for="lastname">Lastname</label>
+        <input type="text" id="lastname" placeholder="lastname" />
+        <label for="age">Age</label>
+        <input type="number" min="12" id="age" placeholder="age" />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="password" />
+        <a (click)="confirmRegistration()"><button>Finish Registration</button></a>
+    </div>
+</ng-template>

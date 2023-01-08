@@ -1,14 +1,9 @@
 <app-nav></app-nav>
 
-<div class="menu">
-  <mat-form-field>
-    <mat-label>Search User</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="id">
-  </mat-form-field>
-  <div class="menu-button">
-    <button (click)="ok()">Create User</button>
-  </div>
-</div>
+<mat-form-field>
+  <mat-label>Search User</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="id">
+</mat-form-field>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
     <ng-container matColumnDef="id">

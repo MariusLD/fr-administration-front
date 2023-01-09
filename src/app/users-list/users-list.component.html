@@ -7,27 +7,27 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> id </th>
+      <th class="column-title" mat-header-cell *matHeaderCellDef> id </th>
       <td mat-cell *matCellDef="let user">{{user.id}}</td>
     </ng-container>
 
     <ng-container matColumnDef="lastname">
-      <th mat-header-cell *matHeaderCellDef> Lastname </th>
+      <th class="column-title" mat-header-cell *matHeaderCellDef> Lastname </th>
       <td mat-cell *matCellDef="let user">{{user.lastname}}</td>
     </ng-container>
   
     <ng-container matColumnDef="firstname">
-      <th mat-header-cell *matHeaderCellDef> Firstname </th>
+      <th class="column-title" mat-header-cell *matHeaderCellDef> Firstname </th>
       <td mat-cell *matCellDef="let user">{{user.firstname}}</td>
     </ng-container>
   
     <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <th class="column-title" mat-header-cell *matHeaderCellDef> Age </th>
       <td mat-cell *matCellDef="let user">{{user.age}}</td>
     </ng-container>
 
     <ng-container matColumnDef="info">
-      <th mat-header-cell *matHeaderCellDef> Info </th>
+      <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let user">
         <div>
           <button (click)="goToInfo(+user.id)">Infos</button>
@@ -36,7 +36,7 @@
     </ng-container>
 
     <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef> Info </th>
+      <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let user">
         <div *ngIf="+user.id !== +service.getId()">
           <button (click)="delete(+user.id)">Delete</button>

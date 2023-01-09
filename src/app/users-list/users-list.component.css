@@ -60,3 +60,8 @@ table {
     margin-left: 15px;
     margin-bottom: -22px;
   }
+
+  .column-title {
+    color: gray;
+    font-size: 18px;
+  }

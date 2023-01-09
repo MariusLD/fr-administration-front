@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { AssosListComponent } from './assos-list/assos-list.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { AssoInfoComponent } from './asso-info/asso-info.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     NavComponent,
     ProfileComponent,
     AssosListComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    AssoInfoComponent
   ],
   imports: [
     BrowserModule,

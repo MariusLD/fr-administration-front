@@ -43,7 +43,15 @@ export class ProfileComponent implements OnInit {
     this.backupAge = this.age;
   }
 
+  isNumber(value: string | number): boolean {
+   return ((value != null) &&
+    (value !== '') &&
+    !isNaN(Number(value.toString())));
+  }
   confirm(): void {
+    if (!this.isNumber(this.age)) {
+      this.age = this.backupAge;
+    }
     this.api.put({endpoint: '/users/' + this.service.getId(), data: {firstname: this.firstname,
         lastname: this.lastname,
         age: this.age}})

@@ -14,7 +14,7 @@ export class NavComponent {
 
   constructor(
     private service: TokenStorageService,
-    private route: Router
+    private router: Router
   ){
     this.isLogged = false
     this.inProfile = true
@@ -22,22 +22,22 @@ export class NavComponent {
 
   logout(): void {
     this.service.clear();
-    this.route.navigateByUrl("/login");
+    this.router.navigateByUrl("/login");
   }
 
   usersList(): void {
-    this.route.navigateByUrl("/users");
+    this.router.navigateByUrl("/users");
   }
 
   profile(): void {
-    this.route.navigateByUrl("/profile");
+    this.router.navigateByUrl("/profile");
   }
 
   assosList(): void {
-    this.route.navigateByUrl("/associations");
+    this.router.navigateByUrl("/associations");
   }
 
   getUrl(): string {
-    return this.route.url;
+    return this.router.url;
   }
 }

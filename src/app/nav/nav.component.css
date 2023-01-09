@@ -4,9 +4,15 @@ div {
     justify-content: center;
     padding-bottom: 50px;
   }
+
+  .exitbutton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
   
-  button {
-    width: 100%;
+  .bouton {
+    width: 20%;
     background-color: #4caf50;
     color: white;
     padding: 14px 20px;
@@ -19,6 +25,6 @@ div {
     font-size: 18px;
   }
   
-  button:hover {
+  .bouton:hover {
     background-color: #00ff7f;
   }

@@ -1,14 +1,10 @@
 <div>
-    <div class="bouton">
-        <button (click)="logout()">Logout</button>
+    <div class="exitbutton">
+        <button mat-fab color="warn" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
     </div>
-    <div class ="bouton">
-        <button *ngIf="getUrl()!=='/profile'" (click)="profile()">Profil</button>
-    </div>
-    <div class ="bouton">
-        <button *ngIf="getUrl()!=='/users'" (click)="usersList()">Liste des utilisateurs</button>
-    </div>
-    <div class ="bouton">
-        <button *ngIf="getUrl()!=='/associations'" (click)="assosList()">Liste des associations</button>
-    </div>
+    <button class="bouton" *ngIf="getUrl()!=='/profile'" (click)="profile()">Profil</button>
+    <button class ="bouton" *ngIf="getUrl()!=='/users'" (click)="usersList()">Liste des utilisateurs</button>
+    <button class="bouton" *ngIf="getUrl()!=='/associations'" (click)="assosList()">Liste des associations</button>
 </div>

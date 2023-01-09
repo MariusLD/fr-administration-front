@@ -1,15 +1,37 @@
 <body>
   <app-nav></app-nav>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-form-field>
+  <mat-label>Search Association</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="id">
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> id </th>
+      <th class="column-title" mat-header-cell *matHeaderCellDef> id </th>
       <td mat-cell *matCellDef="let asso"> {{asso.id}} </td>
     </ng-container>
   
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th class="column-title" mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let asso"> {{asso.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="info">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let user">
+        <div>
+          <button (click)="goToInfo(+user.id)">Infos</button>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let user">
+        <div>
+          <button (click)="delete(+user.id)">Delete</button>
+        </div>
+      </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

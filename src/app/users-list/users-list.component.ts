@@ -15,7 +15,7 @@ export class UsersListComponent implements OnInit {
 
   constructor(
     private api: ApiHelperService,
-    private route: Router,
+    private router: Router,
     public service: TokenStorageService
     ){}
   
@@ -30,12 +30,16 @@ export class UsersListComponent implements OnInit {
   }
 
   goToInfo(id: number): void {
-    this.route.navigateByUrl('/user/' + id);
+    this.router.navigateByUrl('/user/' + id);
   }
 
   delete(id: number): void {
     this.api.delete({endpoint: '/users/' + id})
-      .then(response => this.ngOnInit());
+      .then(response => {
+        const index = this.dataSource.data.indexOf(response.id);
+        this.dataSource.data.splice(index, 1);
+        this.dataSource._updateChangeSubscription(); // <-- Refresh the datasource
+      });
   }
 
   applyFilter(event: Event){

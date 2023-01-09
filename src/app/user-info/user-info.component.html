@@ -19,6 +19,9 @@
         <div class="item-asso">
           {{asso.name}}
         </div>
+        <div>
+          <button (click)="goToAssoInfo(+asso.id)">Infos</button>
+        </div>
       </ng-container>
     </mat-card-content>
     <br>

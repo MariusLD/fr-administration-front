@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiHelperService } from '../service/api-helper.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class UserInfoComponent {
 
   constructor(
     private api: ApiHelperService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
   
   ngOnInit(): void {
@@ -31,5 +32,9 @@ export class UserInfoComponent {
     this.api.get({endpoint: '/users/' + this.route.snapshot.paramMap.get('id') + '/associations'})
       .then(response => { this.listAsso = response })
       .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error: '+ error));
+  }
+
+  goToAssoInfo(id: number): void {
+    this.router.navigateByUrl('/association/' + id);
   }
 }

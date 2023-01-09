@@ -11,6 +11,9 @@
         {{user.firstname}}
         {{user.lastname}}
         </div>
+        <div>
+            <button (click)="goToUserInfo(+user.id)">Infos</button>
+        </div>
       </ng-container>
     </mat-card-content>
     <br>

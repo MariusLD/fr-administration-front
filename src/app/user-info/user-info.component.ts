@@ -28,16 +28,8 @@ export class UserInfoComponent {
         this.age = response.age;})
       .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
 
-    this.api.get({endpoint: '/associations'})
-      .then(response => {
-        for (let asso of response) {
-          for (let user of asso.users) {
-            if (user.id === +this.route.snapshot.params['id']) {
-              this.listAsso.push(asso);
-            }
-          }
-        }
-      })
+    this.api.get({endpoint: '/users/' + this.route.snapshot.paramMap.get('id') + '/associations'})
+      .then(response => { this.listAsso = response })
       .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error: '+ error));
   }
 }

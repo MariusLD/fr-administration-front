@@ -1,17 +1,21 @@
 body {
   background-color: #181A1B;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
 
 th {
   background-color: #4caf50;
@@ -28,9 +32,9 @@ td {
 }
 
 .mat-elevation-z8 {
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),
-              0 6px 10px 0 rgba(0,0,0,.14),
-              0 1px 18px 0 rgba(0,0,0,.12);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2),
+    0 6px 10px 0 rgba(0, 0, 0, .14),
+    0 1px 18px 0 rgba(0, 0, 0, .12);
 }
 
 button {

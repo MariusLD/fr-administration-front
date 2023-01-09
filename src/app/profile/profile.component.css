@@ -1,113 +1,110 @@
-body {
-  background-color: #181A1B;
+.card {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10%;
+  background-color: #3B3B3B;
+  color: white;
 }
 
-.card {
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 10%;
-    background-color: #3B3B3B;
-    color: white;
-  }
-  
-  .item-firstname,
-  .item-lastname,
-  .item-age {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .mat-card-footer {
-    background-color: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .mat-progress-bar {
-    width: 80%;
-  }
-  
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: #4caf50;
-    color: white;
-    padding: 14px 20px;
-    margin: auto;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  
-  button:hover {
-    background-color: #00ff7f;
-  }
+.item-firstname,
+.item-lastname,
+.item-age {
+  font-size: 18px;
+  margin: 10px 0;
+}
 
-  .list-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+.mat-card-footer {
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .label-input {
-    display: flex;;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+.mat-progress-bar {
+  width: 80%;
+}
 
-  .label-input label[for="age"] {
-    color: white;
-  }
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
 
-  .label-input label[for="firstname"] {
-    color: white;
-  }
+button:hover {
+  background-color: #00ff7f;
+}
 
-  .label-input label[for="lastname"] {
-    color: white;
-  }
+.list-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .label-input label[for="confpassword"] {
-    color: white;
-  }
-  
-  .label-input label[for="newpassword"] {
-    color: white;
-  }
+.label-input {
+  display: flex;
+  ;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  input {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    color: #333;
-    background-color: #fff;
-  }
+.label-input label[for="age"] {
+  color: white;
+}
 
-  label {
-    font-size: 16px;
-    color: #333;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 10px 0;
-  }
+.label-input label[for="firstname"] {
+  color: white;
+}
 
-  .button-list{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
+.label-input label[for="lastname"] {
+  color: white;
+}
 
-  .button-in-list button {
-    width: 75%;
-  }
+.label-input label[for="confpassword"] {
+  color: white;
+}
+
+.label-input label[for="newpassword"] {
+  color: white;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.button-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-in-list button {
+  width: 75%;
+}

@@ -1,23 +1,24 @@
 <app-nav></app-nav>
-
 <mat-card class="card">
+  <br>
+  <mat-card-title>{{name}}</mat-card-title>
+  <mat-card-content>
     <br>
-    <mat-card-title>{{name}}</mat-card-title>
-    <mat-card-content>
-      <br>
-      <mat-card-title>Users</mat-card-title>
-      <ng-container *ngFor="let user of listUser">
-        <div class="item-asso">
+    <mat-card-title>Users</mat-card-title>
+    <ng-container *ngFor="let user of listUser">
+      <div class="item-asso">
         {{user.firstname}}
         {{user.lastname}}
-        </div>
-        <div>
-            <button (click)="goToUserInfo(+user.id)">Infos</button>
-        </div>
-      </ng-container>
-    </mat-card-content>
-    <br>
-    <mat-card-footer>
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </mat-card-footer>
-  </mat-card>
+      </div>
+      <div>
+        <button mat-fab color="primary" (click)="goToUserInfo(+user.id)">
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </mat-card-content>
+  <br>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

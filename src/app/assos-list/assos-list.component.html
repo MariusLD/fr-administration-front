@@ -1,44 +1,42 @@
-<body>
-  <app-nav></app-nav>
+<app-nav></app-nav>
 <mat-form-field>
   <mat-label>Search Association</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="id">
 </mat-form-field>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="id">
-      <th class="column-title" mat-header-cell *matHeaderCellDef> id </th>
-      <td mat-cell *matCellDef="let asso"> {{asso.id}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="name">
-      <th class="column-title" mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let asso"> {{asso.name}} </td>
-    </ng-container>
+  <ng-container matColumnDef="id">
+    <th class="column-title" mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let asso"> {{asso.id}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="info">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let user">
-        <div>
-          <button mat-fab color="primary" (click)="goToInfo(+user.id)">
-            <mat-icon>info</mat-icon>
-          </button>
-        </div>
-      </td>
-    </ng-container>
+  <ng-container matColumnDef="name">
+    <th class="column-title" mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let asso"> {{asso.name}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let user">
-        <div>
-          <button mat-fab color="warn" (click)="delete(+user.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</body>
+  <ng-container matColumnDef="info">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let user">
+      <div>
+        <button mat-fab color="primary" (click)="goToInfo(+user.id)">
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let user">
+      <div>
+        <button mat-fab color="warn" (click)="delete(+user.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

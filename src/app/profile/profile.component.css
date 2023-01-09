@@ -63,6 +63,26 @@ body {
     justify-content: space-between;
   }
 
+  .label-input label[for="age"] {
+    color: white;
+  }
+
+  .label-input label[for="firstname"] {
+    color: white;
+  }
+
+  .label-input label[for="lastname"] {
+    color: white;
+  }
+
+  .label-input label[for="confpassword"] {
+    color: white;
+  }
+  
+  .label-input label[for="newpassword"] {
+    color: white;
+  }
+
   input {
     padding: 10px;
     margin: 10px 0;

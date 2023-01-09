@@ -1,3 +1,6 @@
+body {
+  background-color: #181A1B;
+}
 div {
     position: absolute;
     top: 50%;
@@ -10,6 +13,7 @@ div {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: white;
   }
   
   input {
@@ -19,6 +23,8 @@ div {
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
+    background-color: #3B3B3B;
+    color: white;
   }
   
   button {

@@ -1,3 +1,7 @@
+body {
+  background-color: #181A1B;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -21,6 +25,8 @@ table {
   td {
     border-bottom: 1px solid #ddd;
     font-size: 16px;
+    background-color: #575757;
+    color: white;
   }
   
   .mat-elevation-z8 {
@@ -29,7 +35,7 @@ table {
                 0 1px 18px 0 rgba(0,0,0,.12);
   }
 
-  button {
+  button.infobutton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +50,7 @@ table {
     font-size: 18px;
   }
   
-  button:hover {
+  button.infobutton:hover {
     background-color: #00ff7f;
   }
 

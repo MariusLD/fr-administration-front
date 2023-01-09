@@ -14,7 +14,9 @@ import { TokenHttpInterceptor } from './interceptor/token.interceptor';
 import { NavComponent } from './nav/nav.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatCardModule } from '@angular/material/card'
+import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { AssosListComponent } from './assos-list/assos-list.component';
@@ -39,7 +41,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
     MatCardModule,
     MatProgressBarModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     {

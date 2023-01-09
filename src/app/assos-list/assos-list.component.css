@@ -25,31 +25,13 @@ td {
   border-bottom: 1px solid #ddd;
   font-size: 16px;
   background-color: #575757;
+  color: white;
 }
 
 .mat-elevation-z8 {
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),
               0 6px 10px 0 rgba(0,0,0,.14),
               0 1px 18px 0 rgba(0,0,0,.12);
-}
-
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  background-color: #4caf50;
-  color: white;
-  padding: 14px 20px;
-  margin: auto;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-button:hover {
-  background-color: #00ff7f;
 }
 
 mat-label {

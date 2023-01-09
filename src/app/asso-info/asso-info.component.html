@@ -1,6 +1,6 @@
-<app-nav></app-nav>
-
-<mat-card class="card">
+<body>
+  <app-nav></app-nav>
+  <mat-card class="card">
     <br>
     <mat-card-title>{{name}}</mat-card-title>
     <mat-card-content>
@@ -12,7 +12,9 @@
         {{user.lastname}}
         </div>
         <div>
-            <button (click)="goToUserInfo(+user.id)">Infos</button>
+            <button mat-fab color="primary" (click)="goToUserInfo(+user.id)">
+              <mat-icon>info</mat-icon>
+            </button>
         </div>
       </ng-container>
     </mat-card-content>
@@ -21,3 +23,4 @@
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </mat-card-footer>
   </mat-card>
+</body>

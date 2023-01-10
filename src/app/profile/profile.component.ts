@@ -51,8 +51,9 @@ export class ProfileComponent implements OnInit {
   confirm(): void {
     if (!this.isNumber(this.age)) {
       this.age = this.backupAge;
-    }
-    this.api.put({endpoint: '/users/' + this.service.getId(), data: {firstname: this.firstname,
+      alert('Enter valid age');
+    } else {
+      this.api.put({endpoint: '/users/' + this.service.getId(), data: {firstname: this.firstname,
         lastname: this.lastname,
         age: this.age}})
       .then(response => {
@@ -61,6 +62,7 @@ export class ProfileComponent implements OnInit {
         this.backupLastname = this.lastname;
         this.isUpdating = false;})
       .catch(error => +error.status === 401 ? alert('Token Expired') : console.log('Error'));
+    }
   }
 
   discard(): void {
